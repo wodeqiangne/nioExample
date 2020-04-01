@@ -21,7 +21,6 @@ public class Reactor implements Runnable{
         serverSocketChannel.bind(new InetSocketAddress(port));
         serverSocketChannel.configureBlocking(false);
         new Accepter(selector, serverSocketChannel, subReactors);
-        this.socketChannel = socketChannel;
         this.selector = selector;
     }
 

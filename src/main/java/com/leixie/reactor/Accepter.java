@@ -13,9 +13,6 @@ public class Accepter implements Runnable{
     ServerSocketChannel serverSocketChannel;
     Selector key;
 
-//    Selector[] subReactorPool;
-//
-//    private static int subReactorSize = 10;
 
     public Accepter(ServerSocketChannel serverSocketChannel, Selector key) {
         this.serverSocketChannel = serverSocketChannel;

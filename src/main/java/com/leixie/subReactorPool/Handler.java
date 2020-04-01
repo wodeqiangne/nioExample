@@ -11,13 +11,13 @@ import java.util.concurrent.Future;
  * @author xielei
  */
 class Handler implements Runnable {
-    SocketChannel socketChannel;
-    SelectionKey selectionKey;
+    public SocketChannel socketChannel;
+    public SelectionKey selectionKey;
 
     private final static int batchSize = 1024;
     ByteBuffer buffer = ByteBuffer.allocate(batchSize);
 
-    private int status;
+    public int status;
 
     public final static int read = 0;
     public final static int write = 1;
@@ -46,7 +46,6 @@ class Handler implements Runnable {
     public void read() throws IOException, InterruptedException {
         if (selectionKey.isValid() && selectionKey.isReadable()) {
             System.out.println("开始读取数据");
-            Thread.sleep(5000);
             buffer.clear();
             int byteRead = socketChannel.read(buffer);
             byte[] b = new byte[byteRead];
@@ -55,6 +54,8 @@ class Handler implements Runnable {
                 System.out.println("收到消息11" + new String(b));
                 status = write;
                 selectionKey.interestOps(SelectionKey.OP_WRITE);
+//                WorkThread workThread = new WorkThread(this, b);
+//                WorkThreadPool.executorService.submit(workThread);
             } else {
                 socketChannel.close();
                 selectionKey.cancel();

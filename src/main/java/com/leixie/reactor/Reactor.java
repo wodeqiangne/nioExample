@@ -7,16 +7,13 @@ import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.util.Iterator;
 import java.util.Set;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 /**
  * @author xielei
  */
 public class Reactor implements Runnable{
 
-//    ExecutorService boss = Executors.newFixedThreadPool(1);
-//    ExecutorService worker = Executors.newFixedThreadPool(10);
+
     Selector selector;
     ServerSocketChannel serverSocket;
 
